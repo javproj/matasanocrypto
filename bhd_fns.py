@@ -1,5 +1,6 @@
 """
-    Hexadecimal <-> Decimal <-> Binary conversions
+    Hexadecimal <-> Decimal <-> Binary conversion functions
+    Includes:
 """
 import sys
 
@@ -13,6 +14,7 @@ hexAlphas = {
     "f" : 15
 }
 
+#Used for getting hex alphas values from their numerical equivalent
 hexVals = {
     10 : "a",
     11 : "b",
@@ -33,13 +35,15 @@ def d2b(decimalIn):
     """ Decimal to Binary function"""    
     #initialize remainder
     rem = 0
-
+    
+    #need to get the integer if fed a string
     dec = int(decimalIn)
     
 
     #string to store binary value
     binval = ""
-
+    
+    #fn for getting binary value
     while dec > 0:
         rem = dec % 2 #remainder
         dec = dec / 2
@@ -49,7 +53,7 @@ def d2b(decimalIn):
     #Need length of binval for appropriate output 
     binLength = len(binval) - 1
 
-    #Depending on size of binval, pad with zeros for multiple of 4 bit output
+    #Depending on size of binval, pad with zeros for multiple of 4/8/12/16 bit output
     if binLength < 4 and int(decimalIn) < 16:
         padamt = 4 - len(binval)    
         binval += "0"*padamt

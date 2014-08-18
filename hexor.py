@@ -1,9 +1,17 @@
-""" Take in 2 hex strings of equal length, XOR, then return hex"""
+""" 
+
+    Take in 2 hex strings of equal length, XOR, then return hex
+    @author: Jesse Vazquez
+
+
+"""
 import sys
 import bhd_fns
 
 ####
 def xor(char1, char2):
+    """Function that takes in 2 characters (0/1) and returns appropriate
+    XOR value"""
     if char1 == char2:
         return "0"
     else:
@@ -31,7 +39,7 @@ while cnt < len(string1):
     s2binary += bhd_fns.h2b(string2[cnt])
     cnt += 1
 
-xorstr = ""
+xorstr = ""     #return string
 
 cnt = 0     #reset counter
 
