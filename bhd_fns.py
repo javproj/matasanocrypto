@@ -31,8 +31,8 @@ alpha = ["a", "b", "c", "d", "e", "f", "A", "B", "C", "D", "E", "F"]
 cnt = 0
 
 #-----Functions####
-def d2b(decimalIn):
-    """ Decimal to Binary function"""    
+def d2b(decimalIn, bits):
+    """ Decimal to Binary function. Takes in a decimal string and a bits amount for output"""    
     #initialize remainder
     rem = 0
     
@@ -53,22 +53,12 @@ def d2b(decimalIn):
     #Need length of binval for appropriate output 
     binLength = len(binval) - 1
 
-    #Depending on size of binval, pad with zeros for multiple of 4/8/12/16 bit output
-    if binLength < 4 and int(decimalIn) < 16:
-        padamt = 4 - len(binval)    
+    #Depending on size of binval
+    if len(binval) > bits:
+        sys.exit("Requested bit output is greater than binary bit amount")
+    else:
+        padamt = bits - len(binval)    
         binval += "0"*padamt
-
-    elif binLength < 8 and int(decimalIn) < 128:
-        padamt = 8 - len(binval)    
-        binval += "0"*padamt   
-
-    elif binLength < 12 and int(decimalIn) < 256:
-        padamt = 12 - len(binval)    
-        binval += "0"*padamt
-    
-    elif binLength < 16 and int(decimalIn) < 512:
-        padamt = 16 - len(binval)    
-        binval += "0"*padamt  
 
     #Reverse binary string for appropriate value
     binval = binval[::-1]
@@ -83,10 +73,10 @@ def h2b(hexIn):
     
     while cnt < len(hexIn):
         if hexIn[cnt] in hexAlphas:    
-            hbOut += d2b(hexAlphas[hexIn[cnt].lower()])
+            hbOut += d2b(hexAlphas[hexIn[cnt].lower(), 4])
     
         else:
-            hbOut += d2b(hexIn[cnt])
+            hbOut += d2b(hexIn[cnt], 4)
         cnt += 1            
 
     return hbOut
