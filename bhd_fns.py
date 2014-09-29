@@ -72,9 +72,8 @@ def h2b(hexIn):
     hbOut = ""  #initialize return value
     
     while cnt < len(hexIn):
-        if hexIn[cnt] in hexAlphas:    
-            hbOut += d2b(hexAlphas[hexIn[cnt].lower(), 4])
-    
+        if hexIn[cnt] in alpha:    
+            hbOut += d2b(hexAlphas[hexIn[cnt].lower()], 4)
         else:
             hbOut += d2b(hexIn[cnt], 4)
         cnt += 1            
