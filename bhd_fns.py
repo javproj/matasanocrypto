@@ -146,4 +146,8 @@ def b2h(bhIn):
     #Now return hex using d2h
     return d2h(deciVal)
 
+def h2d(inval):
+    """Hex to Decimal"""
+    return b2d(h2b(inval))
+
 #-----/FUNCTIONS###
